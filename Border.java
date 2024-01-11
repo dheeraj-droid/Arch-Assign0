@@ -6,7 +6,6 @@ public class Border {
     public Border(int width, float prob, int height) {
         this.width = width;
         this.probability = prob;
-
         sensors = new Sensor[this.width][height];
 
         for (int i = 0; i < this.width; i++) {
