@@ -1,9 +1,14 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class Project {
     public static void main(String[] args) {
         Clock clock = new Clock();
-        int width = 5;
+        int width = Integer.parseInt(args[0]);
+        float probability = Float.parseFloat(args[1]);
+        String outputFileName = args[2];
         Infiltrator infiltrator = new Infiltrator(width);
-        float probability = 0.5f;
         int height = 1000;
         Border border = new Border(width, probability, height);
         for (Sensor[] row : border.sensors) {
@@ -31,6 +36,11 @@ public class Project {
                 
             }
              clock.time+=10;
+        }
+        try (PrintWriter writer = new PrintWriter(new FileWriter(outputFileName, true))) {
+            writer.printf("%d %f %d%n", width, probability, clock.getTime());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         System.out.printf("Infiltrator crossed the border! and time taken is %d secs",clock.getTime());
     }
