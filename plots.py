@@ -39,6 +39,8 @@ def plot_3d_data(data, title):
     plt.show()
 
 output_file = "output.txt"
+with open(output_file, 'w') as file:
+    file.write("")
 
 #width, probability, and running Java simulations          
 width_values = [random.randint(5, 100) for _ in range(100)]
