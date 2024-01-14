@@ -41,8 +41,8 @@ def plot_3d_data(data, title):
 output_file = "output.txt"
 
 #width, probability, and running Java simulations          
-width_values = [5,10,15,20,25,30,35,40]
-probability_values = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]
+width_values = [random.randint(5, 100) for _ in range(100)]
+probability_values =  [random.uniform(0.2, 0.9) for _ in range(100)]
 with open(output_file, 'a') as file:
     for width, probability in zip(width_values, probability_values):
         run_java_simulation(width, probability, output_file)
